@@ -1,28 +1,67 @@
-let uri = "https://api.spotify.com/v1/artists/3JSSjGYcIkgsrz7892CelT/top-tracks?market=US";
+let uri="https://accounts.spotify.com/api/token"
 
-let token = "Bearer BQCZU8oFDvMBRYuZ48wanxmj3YXePc9HvWVtIladlRJYdo_kO0adFWRpVkKFA6AAf_RZtulVq-wKBIhWAtCM3NZENOjr0FjO4i27_9vpdUsZuyM_RIzIAVo24-7iL99MJwRqvZhvmWKvMk1_8naU7r386B3NHq_Avgw";
+let dato1="grant_type=client_credentials";
+let dato2="client_id=4f79757140434bd6a9314c8e04ddaaac";
+let dato3="client_secret=30f2b4a59aea4b17a7578b709069d96a";
 
-let parametrosPeticion = {
-    method:"GET",
+let parametrosPeticion={
+    method:"POST",
     headers:{
-        Authorization:token
-    }
-
+        "Content-Type":"application/x-www-form-urlencoded"
+    },
+    body : dato1+"&"+dato2+"&"+dato3
 }
 
-fetch(uri,parametrosPeticion ) //Fetch es una promesa
+fetch(uri,parametrosPeticion)
 .then(function(respuesta){
-    return (respuesta.json());
+    return(respuesta.json());
 })
 .then(function(respuesta){
-    console.log(respuesta); //Objeto
+    console.log(respuesta);
 
-    pintarDatos(respuesta.tracks);
+    obtenerToken(respuesta);
 
 })
 .catch(function(error){
     console.log(error);
 })
+
+function obtenerToken(datos){
+
+    let token = datos.token_type + " " + datos.access_token;
+    console.log(token) ;
+    pedirCanciones(token);
+
+
+}
+
+function pedirCanciones(token){
+
+    let uri = "https://api.spotify.com/v1/artists/3JSSjGYcIkgsrz7892CelT/top-tracks?market=US";
+
+    let parametrosPeticion = {
+        method:"GET",
+        headers:{
+            Authorization:token
+        }
+    
+    }
+
+    fetch(uri,parametrosPeticion ) //Fetch es una promesa
+    .then(function(respuesta){
+        return (respuesta.json());
+    })
+    .then(function(respuesta){
+        console.log(respuesta); //Objeto
+
+        pintarDatos(respuesta.tracks);
+
+    })
+    .catch(function(error){
+        console.log(error);
+    })
+
+}
 
 function pintarDatos(datos){
 
