@@ -1,6 +1,6 @@
 let uri = "https://api.spotify.com/v1/artists/3JSSjGYcIkgsrz7892CelT/top-tracks?market=US";
 
-let token = "Bearer BQApICPKCLmwH6uE9WGUy5rjRXNwMPBeRxNt2zRcI_Dz6G6c1C_lCUKCVh4XIIwHUqqyogmQGaChT_Fb5_fINaNikKrPR3zHxpelh3XlvmmO27uhtnXIdNq60rnB_kP3Bv7V";
+let token = "Bearer BQDpO5Lxd4VWXvh_RMpinhu-zl_-UsiZB27Nmq2pw2tAM8SRgxmNTFpbwJu67nmhs578mPA1o8YedNrN4oue6yqGihqEFq_5JU0NfEn4836ZPoLstkYxiAHYQx4KWOOJQ9Na9ma5Xtjlqr-RvJ5bntX5DOIHgC4f1DY";
 
 let parametrosPeticion = {
     method:"GET",
